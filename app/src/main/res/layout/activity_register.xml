@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="username"
+            type="String" />
+
+        <variable
+            name="account"
+            type="String" />
+
+        <variable
+            name="password"
+            type="String" />
+
+        <variable
+            name="surePassword"
+            type="String" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.activity.RegisterActivity">
+
+        <View
+            android:id="@+id/ar_view"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ar_cl"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            app:layout_constraintTop_toBottomOf="@id/ar_view">
+
+            <ImageView
+                android:id="@+id/ar_return"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:padding="12dp"
+                android:src="@drawable/icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="注册账号"
+                android:textColor="@color/font_gray3"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="30dp"
+            android:background="@null"
+            android:hint="请输入姓名"
+            android:maxLength="10"
+            android:text="@={username}"
+            android:textColor="@color/font_gray3"
+            android:textColorHint="@color/font_gray9"
+            android:textSize="14dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/background_graye" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@null"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="请输入账号"
+            android:inputType="textEmailAddress"
+            android:maxLength="10"
+            android:text="@={account}"
+            android:textColor="@color/font_gray3"
+            android:textColorHint="@color/font_gray9"
+            android:textSize="14dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/background_graye" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@null"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:maxLength="16"
+            android:text="@={password}"
+            android:textColor="@color/font_gray3"
+            android:textColorHint="@color/font_gray9"
+            android:textSize="14dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/background_graye" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@null"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="请确认密码"
+            android:inputType="textPassword"
+            android:maxLength="16"
+            android:text="@={surePassword}"
+            android:textColor="@color/font_gray3"
+            android:textColorHint="@color/font_gray9"
+            android:textSize="14dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/background_graye" />
+
+        <RadioGroup
+            android:id="@+id/ar_rg"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:checkedButton="@id/ar_rb_2"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/ar_rb_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="专家" />
+
+            <RadioButton
+                android:id="@+id/ar_rb_3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:text="作者" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/al_btn_register"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/is_enabled_background"
+            android:enabled="@{username.length() >0 &amp;&amp; account.length()>=6 &amp;&amp; password.length()>=6 &amp;&amp; surePassword.length()>=6}"
+            android:text="注册"
+            android:textColor="@color/is_enabled_font_color"
+            android:textSize="14dp"
+            app:layout_constraintTop_toBottomOf="@id/al_et_password"
+            tools:layout_editor_absoluteX="30dp" />
+    </LinearLayout>
+</layout>

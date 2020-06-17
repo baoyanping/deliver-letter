@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="bean"
+            type="com.example.myapplication.bean.ArticleBean" />
+
+        <variable
+            name="title"
+            type="String" />
+
+        <variable
+            name="content"
+            type="String" />
+
+        <variable
+            name="identity"
+            type="int" />
+
+        <variable
+            name="reason"
+            type="String" />
+
+        <variable
+            name="isNew"
+            type="boolean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.activity.ArticleDetailActivity">
+
+        <View
+            android:id="@+id/aad_view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/aad_cl"
+            android:layout_width="match_parent"
+            android:layout_height="44dp">
+
+            <ImageView
+                android:id="@+id/aad_return"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:padding="12dp"
+                android:src="@drawable/icon_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/aad_iv_delete"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="15dp"
+                android:padding="12dp"
+                android:src="@drawable/icon_delete"
+                android:tint="@color/font_gray3"
+                android:visibility="@{identity==1 ?View.VISIBLE:View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="文章详情"
+                android:textColor="@color/font_gray3"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/aad_cl">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/aad_cl_author"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{(bean==null||isNew||(bean.authorName.length()==0))?View.GONE:View.VISIBLE}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="作者："
+                        android:textColor="@color/font_gray3"
+                        android:textSize="14dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{bean.authorName}"
+                        android:textColor="@color/font_gray3"
+                        android:textSize="14dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/aad_cl_expert"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{(bean==null||isNew||(bean.expertName.length()==0))?View.GONE:View.VISIBLE}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/aad_cl_author">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="专家："
+                        android:textColor="@color/font_gray3"
+                        android:textSize="14dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{bean.expertName}"
+                        android:textColor="@color/font_gray3"
+                        android:textSize="14dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <EditText
+                    app:bl_corners_radius="5dp"
+                    app:bl_stroke_color="@color/font_gray9"
+                    app:bl_stroke_width="0.5dp"
+                    android:background="@null"
+                    android:id="@+id/aad_tv_title"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:hint="请输入标题"
+                    android:maxLength="20"
+                    android:text="@={title}"
+                    android:textColor="@color/font_gray3"
+                    android:textColorHint="@color/font_gray9"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/aad_cl_expert" />
+
+                <EditText
+                    android:background="@null"
+                    android:id="@+id/aad_tv_content"
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="请输入内容"
+                    android:maxLength="3000"
+                    android:padding="5dp"
+                    android:text="@={content}"
+                    android:textColor="@color/font_gray3"
+                    android:textColorHint="@color/font_gray9"
+                    android:textSize="14dp"
+                    app:bl_corners_radius="5dp"
+                    app:bl_stroke_color="@color/font_gray9"
+                    app:bl_stroke_width="0.5dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/aad_tv_title" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/aad_cl_"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{(identity!=2&amp;&amp;(bean.approval==2))?View.VISIBLE:View.GONE}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/aad_tv_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="不通过理由："
+                        android:textColor="@color/font_gray3"
+                        android:textSize="14dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{bean.remarks}"
+                        android:textColor="@color/font_gray3"
+                        android:textSize="14dp"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <EditText
+                    app:bl_corners_radius="5dp"
+                    app:bl_stroke_color="@color/font_gray9"
+                    app:bl_stroke_width="0.5dp"
+                    android:background="@null"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:maxLength="20"
+                    android:hint="如果不通过请输入理由"
+                    android:text="@={reason}"
+                    android:textColor="@color/font_gray3"
+                    android:textColorHint="@color/font_gray9"
+                    android:textSize="14dp"
+                    android:visibility="@{identity==2&amp;&amp;bean.approval==0?View.VISIBLE:View.GONE}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/aad_tv_content" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="120dp"
+                    android:layout_marginRight="15dp"
+                    android:visibility="@{identity==2&amp;&amp;bean.approval==0?View.VISIBLE:View.GONE}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/aad_tv_content">
+
+                    <TextView
+                        android:id="@+id/aud_tv_agree"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="50dp"
+                        android:gravity="center"
+                        android:text="通过"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"
+                        app:bl_corners_radius="15dp"
+                        app:bl_solid_color="@color/font_red"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/aud_tv_disagree"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:gravity="center"
+                        android:text="不通过"
+                        android:textColor="@color/white"
+                        android:textSize="12dp"
+                        app:bl_corners_radius="15dp"
+                        app:bl_solid_color="@color/font_green"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/aad_tv_sure"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@drawable/is_enabled_background"
+                    android:enabled="@{title.length() > 0 &amp;&amp; content.length()>0}"
+                    android:text="确定"
+                    android:textColor="@color/is_enabled_font_color"
+                    android:textSize="14dp"
+                    android:visibility="@{isNew ?View.VISIBLE:View.GONE}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/aad_tv_content"
+                    tools:layout_editor_absoluteX="30dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>
